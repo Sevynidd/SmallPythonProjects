@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.2">
+  <object class="tk.Toplevel" id="mainwindow">
+    <property name="height">250</property>
+    <property name="resizable">both</property>
+    <property name="title" translatable="yes">Hello World App</property>
+    <property name="width">400</property>
+    <child>
+      <object class="ttk.Label" id="Clock">
+        <property name="anchor">center</property>
+        <property name="font">{Bahnschrift} 20 {}</property>
+        <property name="justify">right</property>
+        <property name="text" translatable="yes">00:00:00</property>
+        <layout manager="place">
+          <property name="anchor">center</property>
+          <property name="x">200</property>
+          <property name="y">40</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="labelHours">
+        <property name="font">{bahnschrift} 10 {}</property>
+        <property name="text" translatable="yes">Hours:</property>
+        <layout manager="place">
+          <property name="anchor">center</property>
+          <property name="x">150</property>
+          <property name="y">80</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="labelMinutes">
+        <property name="font">{bahnschrift} 10 {}</property>
+        <property name="text" translatable="yes">Minutes:</property>
+        <layout manager="place">
+          <property name="anchor">center</property>
+          <property name="x">150</property>
+          <property name="y">110</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="labelSeconds">
+        <property name="font">{bahnschrift} 10 {}</property>
+        <property name="text" translatable="yes">Seconds:</property>
+        <layout manager="place">
+          <property name="anchor">center</property>
+          <property name="x">150</property>
+          <property name="y">140</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="buttonStart">
+        <property name="text" translatable="yes">Start</property>
+        <layout manager="place">
+          <property name="anchor">center</property>
+          <property name="x">140</property>
+          <property name="y">180</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="buttonStop">
+        <property name="text" translatable="yes">Stop</property>
+        <layout manager="place">
+          <property name="anchor">center</property>
+          <property name="x">240</property>
+          <property name="y">180</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Entry" id="entryHours">
+        <property name="font">{bahnschrift} 10 {}</property>
+        <property name="text" translatable="yes">0</property>
+        <property name="width">4</property>
+        <layout manager="place">
+          <property name="anchor">center</property>
+          <property name="x">230</property>
+          <property name="y">80</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Entry" id="entryMinutes">
+        <property name="font">{bahnschrift} 10 {}</property>
+        <property name="text" translatable="yes">0</property>
+        <property name="width">4</property>
+        <layout manager="place">
+          <property name="anchor">center</property>
+          <property name="x">230</property>
+          <property name="y">110</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Entry" id="entrySeconds">
+        <property name="font">{bahnschrift} 10 {}</property>
+        <property name="text" translatable="yes">0</property>
+        <property name="width">4</property>
+        <layout manager="place">
+          <property name="anchor">center</property>
+          <property name="x">230</property>
+          <property name="y">140</property>
+        </layout>
+      </object>
+    </child>
+  </object>
+</interface>
