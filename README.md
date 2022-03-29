@@ -1,3 +1,3 @@
 # Small Python Projects
 
-[Timer](main/CountdownClockAndTimer.md)
+[Timer](../../CountdownClockAndTimer/CountdownClockAndTimer.md)
