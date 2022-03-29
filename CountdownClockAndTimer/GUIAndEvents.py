@@ -1,14 +1,12 @@
 import pathlib
 import tkinter as tk
 import tkinter.ttk as ttk
+import TimerThread
+import threading
 
 
 PROJECT_PATH = pathlib.Path(__file__).parent
 PROJECT_UI = PROJECT_PATH / "main.ui"
-
-
-def start_button():
-    print("startbutton")
 
 
 def stop_button():
@@ -53,7 +51,7 @@ class MainApp:
         self.buttonStart = ttk.Button(self.mainwindow)
         self.buttonStart.configure(compound='top', text='Start')
         self.buttonStart.place(anchor='center', x='140', y='180')
-        self.buttonStart.configure(command=start_button)
+        self.buttonStart.configure(command=self.start_button)
         self.buttonStart.bind('<1>', self.callback, add='')
         self.buttonStop = ttk.Button(self.mainwindow)
         self.buttonStop.configure(text='Stop')
@@ -143,3 +141,12 @@ class MainApp:
                     self.ClockSeconds["text"] = self.sv_seconds.get()
         else:
             self.ClockSeconds["text"] = "0"
+
+    def start_button(self):
+        self.buttonStart["state"] = "disabled"
+        self.entryHours["state"] = "readonly"
+        self.entryMinutes["state"] = "readonly"
+        self.entrySeconds["state"] = "readonly"
+
+        CountdownThread = threading.Thread(target=TimerThread.countdown, args=(MainApp,), daemon=True)
+        CountdownThread.start()
