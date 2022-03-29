@@ -8,6 +8,7 @@
     <child>
       <object class="ttk.Label" id="Clock">
         <property name="anchor">center</property>
+        <property name="cursor">arrow</property>
         <property name="font">{Bahnschrift} 20 {}</property>
         <property name="justify">right</property>
         <property name="text" translatable="yes">00:00:00</property>
@@ -53,6 +54,7 @@
     </child>
     <child>
       <object class="ttk.Button" id="buttonStart">
+        <property name="compound">top</property>
         <property name="text" translatable="yes">Start</property>
         <layout manager="place">
           <property name="anchor">center</property>

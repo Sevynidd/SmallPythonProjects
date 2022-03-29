@@ -12,7 +12,8 @@ class MainApp:
         # build ui
         self.mainwindow = tk.Tk() if master is None else tk.Toplevel(master)
         self.Clock = ttk.Label(self.mainwindow)
-        self.Clock.configure(anchor='center', font='{Bahnschrift} 20 {}', justify='right', text='00:00:00')
+        self.Clock.configure(anchor='center', cursor='arrow', font='{Bahnschrift} 20 {}', justify='right')
+        self.Clock.configure(text='00:00:00')
         self.Clock.place(anchor='center', x='200', y='40')
         self.labelHours = ttk.Label(self.mainwindow)
         self.labelHours.configure(font='{bahnschrift} 10 {}', text='Hours:')
@@ -24,7 +25,7 @@ class MainApp:
         self.labelSeconds.configure(font='{bahnschrift} 10 {}', text='Seconds:')
         self.labelSeconds.place(anchor='center', x='150', y='140')
         self.buttonStart = ttk.Button(self.mainwindow)
-        self.buttonStart.configure(text='Start')
+        self.buttonStart.configure(compound='top', text='Start')
         self.buttonStart.place(anchor='center', x='140', y='180')
         self.buttonStop = ttk.Button(self.mainwindow)
         self.buttonStop.configure(text='Stop')
@@ -61,5 +62,3 @@ class MainApp:
 if __name__ == '__main__':
     app = MainApp()
     app.run()
-
-
