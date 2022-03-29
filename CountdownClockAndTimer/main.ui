@@ -6,20 +6,6 @@
     <property name="title" translatable="yes">Hello World App</property>
     <property name="width">400</property>
     <child>
-      <object class="ttk.Label" id="Clock">
-        <property name="anchor">center</property>
-        <property name="cursor">arrow</property>
-        <property name="font">{Bahnschrift} 20 {}</property>
-        <property name="justify">right</property>
-        <property name="text" translatable="yes">00:00:00</property>
-        <layout manager="place">
-          <property name="anchor">center</property>
-          <property name="x">200</property>
-          <property name="y">40</property>
-        </layout>
-      </object>
-    </child>
-    <child>
       <object class="ttk.Label" id="labelHours">
         <property name="font">{bahnschrift} 10 {}</property>
         <property name="text" translatable="yes">Hours:</property>
@@ -116,6 +102,76 @@
           <property name="anchor">center</property>
           <property name="x">230</property>
           <property name="y">140</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="ClockHours">
+        <property name="anchor">center</property>
+        <property name="cursor">arrow</property>
+        <property name="font">{Bahnschrift} 20 {}</property>
+        <property name="justify">right</property>
+        <property name="text" translatable="yes">00</property>
+        <layout manager="place">
+          <property name="anchor">e</property>
+          <property name="x">170</property>
+          <property name="y">40</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="ClockMinutes">
+        <property name="anchor">center</property>
+        <property name="cursor">arrow</property>
+        <property name="font">{Bahnschrift} 20 {}</property>
+        <property name="justify">right</property>
+        <property name="text" translatable="yes">00</property>
+        <layout manager="place">
+          <property name="anchor">center</property>
+          <property name="x">200</property>
+          <property name="y">40</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="ClockSeconds">
+        <property name="anchor">center</property>
+        <property name="cursor">arrow</property>
+        <property name="font">{Bahnschrift} 20 {}</property>
+        <property name="justify">right</property>
+        <property name="text" translatable="yes">00</property>
+        <layout manager="place">
+          <property name="anchor">center</property>
+          <property name="x">240</property>
+          <property name="y">40</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="Doppelpunkt1">
+        <property name="anchor">center</property>
+        <property name="cursor">arrow</property>
+        <property name="font">{Bahnschrift} 20 {}</property>
+        <property name="justify">right</property>
+        <property name="text" translatable="yes">:</property>
+        <layout manager="place">
+          <property name="anchor">center</property>
+          <property name="x">180</property>
+          <property name="y">38</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="Doppelpunkt2">
+        <property name="anchor">center</property>
+        <property name="cursor">arrow</property>
+        <property name="font">{Bahnschrift} 20 {}</property>
+        <property name="justify">right</property>
+        <property name="text" translatable="yes">:</property>
+        <layout manager="place">
+          <property name="anchor">center</property>
+          <property name="x">220</property>
+          <property name="y">38</property>
         </layout>
       </object>
     </child>
