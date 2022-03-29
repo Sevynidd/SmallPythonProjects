@@ -54,8 +54,10 @@
     </child>
     <child>
       <object class="ttk.Button" id="buttonStart">
+        <property name="command" type="command" cbtype="simple">start_button</property>
         <property name="compound">top</property>
         <property name="text" translatable="yes">Start</property>
+        <bind sequence="&lt;1&gt;" handler="callback" add="" />
         <layout manager="place">
           <property name="anchor">center</property>
           <property name="x">140</property>
@@ -65,7 +67,9 @@
     </child>
     <child>
       <object class="ttk.Button" id="buttonStop">
+        <property name="command" type="command" cbtype="simple">stop_button</property>
         <property name="text" translatable="yes">Stop</property>
+        <bind sequence="&lt;1&gt;" handler="callback" add="" />
         <layout manager="place">
           <property name="anchor">center</property>
           <property name="x">240</property>
