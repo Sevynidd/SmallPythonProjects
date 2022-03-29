@@ -1,3 +1,3 @@
 # Small Python Projects
 
-[Timer](tree/main/CountdownClockAndTimer)
+[Timer](main/CountdownClockAndTimer.md)
