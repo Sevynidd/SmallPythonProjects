@@ -1,3 +1,3 @@
 # Small Python Projects
 
-[Timer](CountdownClockAndTimer/Timer.md)
+## 1. [Timer](CountdownClockAndTimer/Timer.md)
