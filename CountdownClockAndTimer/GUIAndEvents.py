@@ -1,5 +1,4 @@
 import pathlib
-import pygubu
 import tkinter as tk
 import tkinter.ttk as ttk
 
@@ -70,7 +69,7 @@ class MainApp:
         self.sv_seconds.trace_add("write", self.entry_callback_seconds)
 
         self.entryHours = ttk.Entry(self.mainwindow, textvariable=self.sv_hours)
-        self.entryHours.configure(font='{bahnschrift} 10 {}', width='4')
+        self.entryHours.configure(font='{bahnschrift} 10 {}', width=4)
         _text_ = '''0'''
         self.entryHours.delete('0', 'end')
         self.entryHours.insert('0', _text_)
@@ -78,7 +77,7 @@ class MainApp:
 
         self.entryMinutes = ttk.Entry(self.mainwindow,
                                       textvariable=self.sv_minutes)
-        self.entryMinutes.configure(font='{bahnschrift} 10 {}', width='4')
+        self.entryMinutes.configure(font='{bahnschrift} 10 {}', width=4)
         _text_ = '''0'''
         self.entryMinutes.delete('0', 'end')
         self.entryMinutes.insert('0', _text_)
@@ -86,7 +85,7 @@ class MainApp:
 
         self.entrySeconds = ttk.Entry(self.mainwindow,
                                       textvariable=self.sv_seconds)
-        self.entrySeconds.configure(font='{bahnschrift} 10 {}', width='4')
+        self.entrySeconds.configure(font='{bahnschrift} 10 {}', width=4)
         _text_ = '''0'''
         self.entrySeconds.delete('0', 'end')
         self.entrySeconds.insert('0', _text_)
@@ -110,9 +109,12 @@ class MainApp:
             if not self.sv_hours.get().isnumeric():
                 self.sv_hours.set(self.sv_hours.get()[:len(self.sv_hours.get()) - 1])
             else:
-                self.ClockHours["text"] = self.sv_hours.get()
+                if len(self.sv_hours.get()) == 1:
+                    self.ClockHours["text"] = "0" + self.sv_hours.get()
+                else:
+                    self.ClockHours["text"] = self.sv_hours.get()
         else:
-            self.ClockHours["text"] = "0"
+            self.ClockHours["text"] = "00"
 
     def entry_callback_minutes(self, var, index, mode):
         if not self.sv_minutes.get() == '':
@@ -121,7 +123,10 @@ class MainApp:
             else:
                 if int(self.sv_minutes.get()) > 60:
                     self.sv_minutes.set(str(60))
-                self.ClockMinutes["text"] = self.sv_minutes.get()
+                if len(self.sv_minutes.get()) == 1:
+                    self.ClockMinutes["text"] = "0" + self.sv_minutes.get()
+                else:
+                    self.ClockMinutes["text"] = self.sv_minutes.get()
         else:
             self.ClockMinutes["text"] = "0"
 
@@ -132,6 +137,9 @@ class MainApp:
             else:
                 if int(self.sv_seconds.get()) > 60:
                     self.sv_seconds.set(str(60))
-                self.ClockSeconds["text"] = self.sv_seconds.get()
+                if len(self.sv_seconds.get()) == 1:
+                    self.ClockSeconds["text"] = "0" + self.sv_seconds.get()
+                else:
+                    self.ClockSeconds["text"] = self.sv_seconds.get()
         else:
             self.ClockSeconds["text"] = "0"
