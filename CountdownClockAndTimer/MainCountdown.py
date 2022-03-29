@@ -7,55 +7,67 @@ PROJECT_PATH = pathlib.Path(__file__).parent
 PROJECT_UI = PROJECT_PATH / "main.ui"
 
 
+def start_button():
+    print("startbutton")
+
+
+def stop_button():
+    print("stopButton")
+
+
 class MainApp:
     def __init__(self, master=None):
         # build ui
         self.mainwindow = tk.Tk() if master is None else tk.Toplevel(master)
-
         self.Clock = ttk.Label(self.mainwindow)
         self.Clock.configure(anchor='center', cursor='arrow', font='{Bahnschrift} 20 {}', justify='right')
         self.Clock.configure(text='00:00:00')
         self.Clock.place(anchor='center', x='200', y='40')
-
         self.labelHours = ttk.Label(self.mainwindow)
         self.labelHours.configure(font='{bahnschrift} 10 {}', text='Hours:')
         self.labelHours.place(anchor='center', x='150', y='80')
-
         self.labelMinutes = ttk.Label(self.mainwindow)
         self.labelMinutes.configure(font='{bahnschrift} 10 {}', text='Minutes:')
         self.labelMinutes.place(anchor='center', x='150', y='110')
-
         self.labelSeconds = ttk.Label(self.mainwindow)
         self.labelSeconds.configure(font='{bahnschrift} 10 {}', text='Seconds:')
         self.labelSeconds.place(anchor='center', x='150', y='140')
-
         self.buttonStart = ttk.Button(self.mainwindow)
         self.buttonStart.configure(compound='top', text='Start')
         self.buttonStart.place(anchor='center', x='140', y='180')
-        self.buttonStart.configure(command=self.start_button)
+        self.buttonStart.configure(command=start_button)
         self.buttonStart.bind('<1>', self.callback, add='')
-
         self.buttonStop = ttk.Button(self.mainwindow)
         self.buttonStop.configure(text='Stop')
         self.buttonStop.place(anchor='center', x='240', y='180')
-        self.buttonStop.configure(command=self.stop_button)
+        self.buttonStop.configure(command=stop_button)
         self.buttonStop.bind('<1>', self.callback, add='')
 
-        self.entryHours = ttk.Entry(self.mainwindow)
+        self.sv_hours = tk.StringVar()
+        self.sv_hours.trace_add("write", self.entry_callback_hours)
+        self.sv_minutes = tk.StringVar()
+        self.sv_minutes.trace_add("write", self.entry_callback_minutes)
+        self.sv_seconds = tk.StringVar()
+        self.sv_seconds.trace_add("write", self.entry_callback_seconds)
+
+
+        self.entryHours = ttk.Entry(self.mainwindow, textvariable=self.sv_hours)
         self.entryHours.configure(font='{bahnschrift} 10 {}', width='4')
         _text_ = '''0'''
         self.entryHours.delete('0', 'end')
         self.entryHours.insert('0', _text_)
         self.entryHours.place(anchor='center', x='230', y='80')
 
-        self.entryMinutes = ttk.Entry(self.mainwindow)
+        self.entryMinutes = ttk.Entry(self.mainwindow,
+                                      textvariable=self.sv_minutes)
         self.entryMinutes.configure(font='{bahnschrift} 10 {}', width='4')
         _text_ = '''0'''
         self.entryMinutes.delete('0', 'end')
         self.entryMinutes.insert('0', _text_)
         self.entryMinutes.place(anchor='center', x='230', y='110')
 
-        self.entrySeconds = ttk.Entry(self.mainwindow)
+        self.entrySeconds = ttk.Entry(self.mainwindow,
+                                      textvariable=self.sv_seconds)
         self.entrySeconds.configure(font='{bahnschrift} 10 {}', width='4')
         _text_ = '''0'''
         self.entrySeconds.delete('0', 'end')
@@ -72,17 +84,39 @@ class MainApp:
     def run(self):
         self.mainwindow.mainloop()
 
-    def start_button(self):
-        pass
-
     def callback(self, event=None):
-        if self.buttonStart:
-            self.start_button(self)
-        elif self.buttonStop:
-            self.stop_button(self)
-
-    def stop_button(self):
         pass
+
+    def entry_callback_hours(self, var, index, mode):
+        if not self.sv_hours.get() == '':
+            if not self.sv_hours.get().isnumeric():
+                self.sv_hours.set(self.sv_hours.get()[:len(self.sv_hours.get()) - 1])
+            else:
+                self.Clock["text"] = self.sv_hours.get() + ":" + self.sv_minutes.get() + ":" + self.sv_seconds.get()
+        else:
+            self.Clock["text"] = "0:" + self.sv_minutes.get() + ":" + self.sv_seconds.get()
+
+    def entry_callback_minutes(self, var, index, mode):
+        if not self.sv_minutes.get() == '':
+            if not self.sv_minutes.get().isnumeric():
+                self.sv_minutes.set(self.sv_minutes.get()[:len(self.sv_minutes.get()) - 1])
+            else:
+                if int(self.sv_minutes.get()) > 60:
+                    self.sv_minutes.set(str(60))
+                self.Clock["text"] = self.sv_hours.get() + ":" + self.sv_minutes.get() + ":" + self.sv_seconds.get()
+        else:
+            self.Clock["text"] = self.sv_hours.get() + ":0:" + self.sv_seconds.get()
+
+    def entry_callback_seconds(self, var, index, mode):
+        if not self.sv_seconds.get() == '':
+            if not self.sv_seconds.get().isnumeric():
+                self.sv_seconds.set(self.sv_seconds.get()[:len(self.sv_seconds.get()) - 1])
+            else:
+                if int(self.sv_seconds.get()) > 60:
+                    self.sv_seconds.set(str(60))
+                self.Clock["text"] = self.sv_hours.get() + ":" + self.sv_minutes.get() + ":" + self.sv_seconds.get()
+        else:
+            self.Clock["text"] = self.sv_hours.get() + ":" + self.sv_minutes.get() + ":0"
 
 
 if __name__ == '__main__':

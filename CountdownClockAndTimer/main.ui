@@ -81,7 +81,9 @@
       <object class="ttk.Entry" id="entryHours">
         <property name="font">{bahnschrift} 10 {}</property>
         <property name="text" translatable="yes">0</property>
+        <property name="validatecommand" type="command" cbtype="entry_validate" args="">hour_entry</property>
         <property name="width">4</property>
+        <bind sequence="&lt;Key&gt;" handler="callback" add="" />
         <layout manager="place">
           <property name="anchor">center</property>
           <property name="x">230</property>
@@ -93,7 +95,9 @@
       <object class="ttk.Entry" id="entryMinutes">
         <property name="font">{bahnschrift} 10 {}</property>
         <property name="text" translatable="yes">0</property>
+        <property name="validatecommand" type="command" cbtype="entry_validate" args="%d">minutes_entry</property>
         <property name="width">4</property>
+        <bind sequence="&lt;Key&gt;" handler="callback" add="" />
         <layout manager="place">
           <property name="anchor">center</property>
           <property name="x">230</property>
@@ -105,7 +109,9 @@
       <object class="ttk.Entry" id="entrySeconds">
         <property name="font">{bahnschrift} 10 {}</property>
         <property name="text" translatable="yes">0</property>
+        <property name="validatecommand" type="command" cbtype="entry_validate" args="%d">seconds_entry</property>
         <property name="width">4</property>
+        <bind sequence="&lt;Key&gt;" handler="callback" add="" />
         <layout manager="place">
           <property name="anchor">center</property>
           <property name="x">230</property>
