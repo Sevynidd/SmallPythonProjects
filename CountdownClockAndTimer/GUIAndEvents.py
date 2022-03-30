@@ -148,5 +148,5 @@ class MainApp:
         self.entryMinutes["state"] = "readonly"
         self.entrySeconds["state"] = "readonly"
 
-        CountdownThread = threading.Thread(target=TimerThread.countdown, args=(MainApp,), daemon=True)
+        CountdownThread = threading.Thread(target=TimerThread.countdown, args=(self,), daemon=True)
         CountdownThread.start()
